@@ -191,6 +191,29 @@
         box-shadow: none;
       }
 
+      /* Carrusel Animación suave al hacer scroll */
+      #storytelling {
+        animation: fadeUp 1.2s ease;
+      }
+
+      @keyframes fadeUp {
+        0% { opacity: 0; transform: translateY( 40px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        filter: invert(1); /* iconos blancos */
+      }
+
+      .carousel-item img {
+        transition: transform 0.6s ease;
+      }
+
+      .carousel-item:hover img {
+        transform: scale(1.05); /* zoom suave */
+      }
+
       /* Footer */
       footer {
         background: #000;
@@ -407,41 +430,47 @@
       </div>
     </section>
 
-    <!-- carrusel Izquierda -->
+    <!-- CARRUSEL IZQUIERDA -->
+    
     <section id="storytelling" class="py-5">
       <div class="container">
         <div class="row align-items-center">
+
+          <!-- CARRUSEL IZQUIERDA -->
           <div class="col-md-6 mb-4 mb-md-0">
-            <div id="demo" class="carousel slide" data-bs-ride="carousel" style="max-width:100%;">
+            <div id="carouselLeft" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
 
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="img/PC3.jpg" class="d-block w-100" style="height:300px; object-fit:cover;">
+                  <img src="img/PC3.jpg" class="d-block w-100" style="height:320px; object-fit:cover;">
                 </div>
 
                 <div class="carousel-item">
-                  <img src="img/1.png" class="d-block w-100" style="height:300px; object-fit:cover;">
+                  <img src="img/1.png" class="d-block w-100" style="height:320px; object-fit:cover;">
                 </div>
 
                 <div class="carousel-item">
-                  <img src="img/PC2.jpg" class="d-block w-100" style="height:300px; object-fit:cover;">
+                  <img src="img/PC2.jpg" class="d-block w-100" style="height:320px; object-fit:cover;">
                 </div>
               </div>
+
               <!-- Botones -->
-              <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselLeft" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselLeft" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
               </button>
 
             </div>
           </div>
 
-          <div class="col-md-6 text-center text-md">
-            <h2 style="font-weight:800; font-size:30px;">Bienvenido a Mi Página</h2>
-            <p style="font-size:18px; margin-top:5px;">
-              Holaaaaa somos la empresa bytmater reada por <b>Haider</b> y <b>Enmanuel</b> el primer edificio se creio en paris 
+          <!-- TEXTO -->
+          <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+            <h2 class="section-title">ByteMasters</h2>
+            <p class="section-text">
+              Somos <b>ByteMasters</b>, una empresa innovadora fundada por <b>Haider</b> y <b>Enmanuel</b>.  
+              Nuestro primer edificio tecnológico fue inaugurado en la ciudad de París.
             </p>
           </div>
 
@@ -449,41 +478,43 @@
       </div>
     </section>
 
-    <!-- carrusel Derecha -->
+    <!-- CARRUSEL DERECHA -->
     <section id="storytelling" class="py-5">
       <div class="container">
         <div class="row align-items-center">
 
+          <!-- TEXTO -->
           <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
-            <h2 style="font-weight:800; font-size:30px;">Bienvenido a Mi Página</h2>
-            <p style="font-size:18px; margin-top:5px;">
-              Holaaaaa somos la empresa ByteMaster creada por <b>Haider</b> y <b>Enmanuel</b>.  
-              El primer edificio se creó en París.
+            <h2 class="section-title">Tecnología que Inspira</h2>
+            <p class="section-text">
+              En ByteMasters trabajamos para ofrecer soluciones digitales modernas, eficientes  
+              y adaptadas al futuro. Innovación, calidad y creatividad en cada proyecto.
             </p>
           </div>
 
+          <!-- CARRUSEL DERECHA -->
           <div class="col-md-6">
-            <div id="demo" class="carousel slide" data-bs-ride="carousel" style="max-width:100%;">
+            <div id="carouselRight" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
 
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="img/PC3.jpg" class="d-block w-100" style="height:300px; object-fit:cover;">
+                  <img src="img/Fondo.avif" class="d-block w-100" style="height:320px; object-fit:cover;">
                 </div>
 
                 <div class="carousel-item">
-                  <img src="img/1.png" class="d-block w-100" style="height:300px; object-fit:cover;">
+                  <img src="img/Montaje2.jpeg" class="d-block w-100" style="height:320px; object-fit:cover;">
                 </div>
 
                 <div class="carousel-item">
-                  <img src="img/PC2.jpg" class="d-block w-100" style="height:300px; object-fit:cover;">
+                  <img src="img/1.png" class="d-block w-100" style="height:320px; object-fit:cover;">
                 </div>
               </div>
 
               <!-- Botones -->
-              <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselRight" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselRight" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
               </button>
 
@@ -493,7 +524,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- Contacto -->
     <section id="contacto" class="py-5">
