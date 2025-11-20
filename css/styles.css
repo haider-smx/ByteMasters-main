@@ -1,0 +1,202 @@
+:root{
+  /* Palette */
+  --bg-900: #071b2a; /* deep background */
+  --accent: #05a6ff; /* blue */
+  --accent-2: #7b2cff; /* purple */
+  --accent-3: #15b57a; /* emerald */
+  --muted: rgba(255,255,255,0.85);
+  --muted-2: rgba(255,255,255,0.65);
+  --glass: rgba(0,0,0,0.6);
+  --radius: 12px;
+  --nav-height: 68px;
+}
+
+/* Reset small elements for accessibility focus */
+*{box-sizing:border-box}
+html,body{height:100%}
+
+/* Global page background to keep all pages consistent and 'guapo' */
+body{
+  background: radial-gradient(circle at top left, rgba(5,166,255,0.06) 0%, rgba(123,44,255,0.04) 25%, rgba(2,6,23,1) 60%),
+              linear-gradient(180deg, var(--bg-900) 0%, #001b2b 100%);
+  color:var(--muted);
+  background-attachment: fixed;
+}
+
+/* Header / Navbar */
+header.navbar{height:var(--nav-height);padding:0.5rem 0;backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(7,27,42,0.6), rgba(7,27,42,0.45));transition:box-shadow .25s, background .25s;z-index:1200}
+header.navbar.scrolled, header.navbar.sticky{background:linear-gradient(180deg, rgba(7,27,42,0.92), rgba(7,27,42,0.96));box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+.container{max-width:1180px}
+.navbar-brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.4px;color:var(--accent);font-size:1.05rem}
+.navbar-brand .logo{width:52px;height:52px;border-radius:12px;overflow:hidden;box-shadow:0 10px 36px rgba(5,166,255,0.12);background:linear-gradient(180deg, rgba(5,166,255,0.06), rgba(123,44,255,0.03));display:inline-flex;align-items:center;justify-content:center}
+.navbar-brand .logo img{width:84%;height:84%;object-fit:contain;display:block;border-radius:8px}
+
+/* Nav links: underline animation + active state */
+.nav-link{
+  color:var(--muted-2);
+  position:relative;
+  transition:color .22s,transform .18s,background .22s,box-shadow .22s;
+  font-weight:600;
+  padding:.35rem .7rem;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px; /* pill shape when active */
+  font-size:1rem;
+  min-height:40px;
+}
+.nav-link:hover{color:var(--accent);transform:translateY(-1px)}
+.nav-link::after{content:'';position:absolute;left:10%;right:10%;bottom:-6px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform-origin:left center;transform:scaleX(0);transition:transform .26s cubic-bezier(.2,.9,.2,1);opacity:1}
+.nav-link:hover::after{transform:scaleX(1)}
+.nav-link.active::after{transform:scaleX(0);opacity:0}
+.nav-link.active{
+  color:#fff;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  box-shadow:0 8px 30px rgba(11,55,100,0.14);
+  font-weight:700;
+}
+
+/* ARIA current indicator (duplicate of .active but ensures screen readers see current) */
+.nav-link[aria-current="page"]{
+  color:#fff !important;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2)) !important;
+  box-shadow:0 10px 36px rgba(11,55,100,0.16) !important;
+}
+
+/* Desktop CTA */
+.btn-cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;border-radius:999px;padding:.45rem .95rem;font-weight:700;border:none;box-shadow:0 10px 36px rgba(11,55,100,0.16);display:inline-flex;align-items:center;gap:.6rem}
+.btn-cta:focus{outline:3px solid rgba(5,166,255,0.18);outline-offset:3px}
+
+/* Buttons used across pages */
+.btn-back{background:#001f3f;color:#fff;border-radius:10px;padding:.5rem .9rem;border:1px solid rgba(255,255,255,.06)}
+.btn-enter{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:.35rem .6rem;font-size:.9rem}
+.btn-enter:hover{background:rgba(255,255,255,0.12);transform:translateY(-3px)}
+
+/* Navbar toggler accessibility */
+.navbar-toggler{border:1px solid rgba(255,255,255,0.06);width:48px;height:44px;border-radius:8px}
+.navbar-toggler:focus{box-shadow:0 6px 20px rgba(5,166,255,0.12);outline:none}
+
+/* Mobile menu slide down (uses Bootstrap collapse but we style appearance) */
+.navbar-collapse{transition:max-height .28s ease, opacity .22s ease}
+
+/* Footer */
+footer{background:#000;color:#fff;padding:12px 0;text-align:center}
+
+/* Modal / Overlay: contact */
+.contact-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:28px;z-index:1400}
+.contact-overlay .backdrop{position:absolute;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.8));backdrop-filter:blur(6px)}
+.contact-panel{position:relative;max-width:960px;width:100%;background:linear-gradient(180deg, rgba(11,20,30,0.96), rgba(7,12,22,0.96));border-radius:14px;padding:28px;box-shadow:0 30px 80px rgba(2,6,23,0.7);color:var(--muted);z-index:1410;transform:translateY(12px);opacity:0;transition:transform .32s ease, opacity .28s ease}
+.contact-panel.open{transform:translateY(0);opacity:1}
+.contact-panel .close-btn{position:absolute;right:14px;top:14px;background:transparent;border:none;color:var(--muted-2);font-size:1.25rem}
+.contact-panel h2{font-size:1.8rem;margin-bottom:6px;color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+.contact-form .form-control{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:var(--muted);border-radius:8px;padding:.65rem}
+.contact-form label{font-weight:600;color:var(--muted)}
+.contact-info{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:10px}
+.contact-actions{display:flex;gap:10px;margin-top:12px}
+.contact-success{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center}
+
+/* More translucent, polished contact modal */
+.contact-panel{
+  /* Translucent glass panel: visually transparent but readable */
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--muted);
+}
+.contact-panel h2{color:#fff;font-weight:800;letter-spacing:.6px;font-size:1.95rem;text-shadow:0 6px 30px rgba(0,0,0,0.45)}
+.contact-form .form-control{background:#fff;color:#031826;border:1px solid rgba(2,6,23,0.08);font-size:1rem;padding:.7rem}
+.contact-form label{color:#031826;font-weight:700;font-size:.95rem;margin-bottom:6px;display:block}
+.contact-form .form-control::placeholder{color:rgba(3,24,38,0.45)}
+.contact-form select, .contact-form textarea{color:#031826}
+.contact-form select option{color:#031826}
+.contact-actions .btn-cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 8px 30px rgba(123,44,255,0.12);color:#fff}
+.contact-info{background:transparent;color:rgba(255,255,255,0.9);border:none;padding:0}
+.contact-info h4{color:#fff;margin-bottom:6px}
+
+/* Make close button visible in light-on-dark modal */
+.contact-panel .close-btn{color:#fff;font-weight:700}
+
+/* Mobile: make modal full screen with translucent background */
+@media (max-width:767px){
+  .contact-panel{height:100vh;border-radius:0;padding:18px;display:flex;flex-direction:column}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-info{order:2;margin-top:12px}
+}
+
+/* Responsive: mobile modal full screen */
+@media (max-width: 767px){
+  .contact-panel{height:100vh;border-radius:0;padding:18px}
+  .contact-grid{grid-template-columns:1fr}
+  .btn-cta{padding:.6rem .9rem}
+}
+
+/* Focus outlines for keyboard users */
+:focus{outline:2px solid rgba(5,166,255,0.18);outline-offset:2px}
+
+/* Focus-visible (only show when keyboard navigating) */
+html:not(.js-focus-visible) :focus{outline: none}
+.js-focus-visible :focus{outline:2px solid rgba(5,166,255,0.2);outline-offset:3px}
+
+/* Slightly larger nav typography for premium look */
+.navbar-nav .nav-link{font-size:1rem;padding:.45rem .9rem}
+
+/* Feature / history cards (use gradients like phases) */
+.feature-card{border:none;border-radius:16px;overflow:hidden;color:#fff;box-shadow:0 14px 40px rgba(2,6,23,0.6);transition:transform .35s,box-shadow .35s;padding:0}
+.feature-card .card-body{padding:1.2rem}
+.feature-card.feature-1{background:linear-gradient(135deg,#00263b 0%, #004e7a 100%)}
+.feature-card.feature-2{background:linear-gradient(135deg,#2b1a4a 0%, #7a1fa2 100%)}
+.feature-card.feature-3{background:linear-gradient(135deg,#0b2f1a 0%, #0f8b5f 100%)}
+.feature-card h5{color:#fff}
+
+/* Apply phase-like gradients to accordion bodies when parent has .phase-* */
+.accordion-item.phase-1 .accordion-body{background:linear-gradient(135deg,#00263b 0%, #004e7a 100%);color:#fff}
+.accordion-item.phase-2 .accordion-body{background:linear-gradient(135deg,#2b1a4a 0%, #7a1fa2 100%);color:#fff}
+.accordion-item.phase-3 .accordion-body{background:linear-gradient(135deg,#0b2f1a 0%, #0f8b5f 100%);color:#fff}
+
+/* Make accordion headers slightly translucent to show the glass effect */
+.accordion-button{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:var(--accent);font-weight:700}
+.accordion-button:not(.collapsed){color:#fff}
+
+/* Mobile tweaks: ensure pill spacing and larger touch targets */
+@media (max-width: 767px){
+  .navbar-brand{font-size:1rem}
+  .navbar-brand .logo{width:44px;height:44px}
+  .navbar-nav .nav-link{padding:.7rem 1rem;font-size:1.02rem}
+}
+
+/* Utility to hide body scroll when modal open */
+.modal-open{overflow:hidden;height:100vh}
+
+/* Small animation for success */
+.pulse{animation:pulse 800ms ease-out}
+@keyframes pulse{0%{transform:scale(.98);opacity:.9}50%{transform:scale(1.01);opacity:1}100%{transform:scale(1);opacity:1}}
+
+/* Final contact modal: dark glass for maximum legibility over background */
+.contact-panel{
+  background: rgba(2,6,23,0.44) !important; /* dark translucent */
+  backdrop-filter: blur(12px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  box-shadow: 0 22px 80px rgba(2,6,23,0.6) !important;
+  color: #ffffff !important;
+}
+.contact-panel h2{color:#ffffff !important; text-shadow:0 6px 24px rgba(0,0,0,0.6) !important}
+.contact-form .form-control{background:#ffffff !important;color:#031826 !important;border:1px solid rgba(2,6,23,0.08) !important}
+.contact-form label{color:#ffffff !important}
+.contact-form .form-control::placeholder{color:rgba(3,24,38,0.45) !important}
+.contact-form select, .contact-form textarea{color:#031826 !important}
+.contact-form select option{color:#031826 !important}
+.contact-info{color:rgba(255,255,255,0.92) !important}
+.contact-info h4{color:#ffffff !important}
+.contact-overlay .backdrop{background: linear-gradient(180deg, rgba(2,6,23,0.55), rgba(2,6,23,0.75));}
+
+/* Map iframe: visible with subtle border */
+.contact-info iframe{border-radius:8px;border:1px solid rgba(255,255,255,0.06);}
+
+/* Close button: white for contrast on dark panel */
+.contact-panel .close-btn{color:#ffffff !important}
+
+@media (max-width:767px){
+  .contact-panel{background: rgba(2,6,23,0.6) !important}
+}
+

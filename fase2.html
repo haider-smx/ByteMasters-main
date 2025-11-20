@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteMasters - Fase II: Hardware</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+      html,body{height:100%}
+      body{font-family:'Montserrat',sans-serif;background:radial-gradient(circle at top,#0b111f 0%, #001f3f 100%);color:#f0f0f0;margin:0;display:flex;flex-direction:column;min-height:100vh}
+      /* Navbar styles are centralized in css/styles.css */
+      main{flex:1;padding:90px 0}
+      .container-card{max-width:1100px;margin:0 auto}
+      .card-panel{background:linear-gradient(135deg,#2b1a4a 0%, #7a1fa2 100%);border-radius:14px;padding:24px;box-shadow:0 14px 40px rgba(0,0,0,.6)}
+      .btn-back{background:#001f3f;color:#fff;border-radius:10px;padding:.5rem .9rem;border:1px solid rgba(255,255,255,.06);}
+      footer{background:#000;color:#fff;padding:12px 0;text-align:center}
+    </style>
+  </head>
+  <body>
+    <header class="navbar navbar-expand-lg navbar-dark fixed-top" role="navigation" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center fw-bold text-uppercase" href="index.html">
+          <div class="logo me-2"><img src="IMG/1.png" alt="logo" style="width:100%;height:100%;object-fit:cover"></div>ByteMasters
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menú"><span class="navbar-toggler-icon"></span></button>
+        <nav class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto gap-3 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="proyecto.html">Proyecto</a></li>
+            <li class="nav-item"><a class="nav-link js-open-contact" href="#" role="button" aria-haspopup="dialog" aria-controls="contactModal">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container container-card">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h1 class="h3 mb-0">Fase II: Hardware</h1>
+          <a href="proyecto.html" class="btn btn-back">← Volver al Proyecto</a>
+        </div>
+
+        <div class="card-panel">
+          <h2 style="color:#e6f9ff;margin-bottom:12px">Equipamiento y laboratorios</h2>
+          <hr style="border-color:rgba(255,255,255,.06);margin:18px 0">
+          <h3 style="color:#cfeeff">Paquetes recomendados</h3>
+          <ul style="color:#dfeffb;line-height:1.6">
+            <li>Paquete Básico: PCs, redes y software libre.</li>
+            <li>Paquete Avanzado: impresoras 3D y kits de robótica.</li>
+            <li>Paquete Profesional: servidores locales y dispositivos IoT gestionados.</li>
+          </ul>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 ByteMasters – Todos los derechos reservados</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/site.js"></script>
+  </body>
+</html>
