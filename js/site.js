@@ -56,11 +56,19 @@
     const toggler = qs('.navbar-toggler');
     const collapse = qs('.navbar-collapse');
     if(!toggler || !collapse) return;
-    // Keep aria-expanded in sync using Bootstrap events
-    collapse.addEventListener('show.bs.collapse', ()=> toggler.setAttribute('aria-expanded','true'));
-    collapse.addEventListener('hide.bs.collapse', ()=> toggler.setAttribute('aria-expanded','false'));
-    // Ensure initial attribute
-    toggler.setAttribute('aria-expanded', collapse.classList.contains('show') ? 'true' : 'false');
+    // Keep aria-expanded in sync using Bootstrap events and add an 'open' class
+    collapse.addEventListener('show.bs.collapse', ()=>{
+      toggler.setAttribute('aria-expanded','true');
+      collapse.classList.add('open');
+    });
+    collapse.addEventListener('hide.bs.collapse', ()=>{
+      toggler.setAttribute('aria-expanded','false');
+      collapse.classList.remove('open');
+    });
+    // Ensure initial attribute and class reflect current state
+    const isShown = collapse.classList.contains('show');
+    toggler.setAttribute('aria-expanded', isShown ? 'true' : 'false');
+    if(isShown) collapse.classList.add('open');
   }
 
   /* Modal builder and focus trap */

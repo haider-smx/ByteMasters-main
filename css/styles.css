@@ -76,8 +76,33 @@ header.navbar.scrolled, header.navbar.sticky{background:linear-gradient(180deg, 
 .navbar-toggler{border:1px solid rgba(255,255,255,0.06);width:48px;height:44px;border-radius:8px}
 .navbar-toggler:focus{box-shadow:0 6px 20px rgba(5,166,255,0.12);outline:none}
 
+/* Custom 3-line toggler (simple, accessible, no rotation) */
+.navbar-toggler-icon{display:inline-block;width:22px;height:16px;position:relative;background-image:linear-gradient(#fff,#fff);background-size:100% 2px;background-repeat:no-repeat;background-position:center}
+.navbar-toggler-icon::before,.navbar-toggler-icon::after{content:'';position:absolute;left:0;right:0;height:2px;background:#fff;border-radius:2px}
+.navbar-toggler-icon::before{top:0}
+.navbar-toggler-icon::after{bottom:0}
+
 /* Mobile menu slide down (uses Bootstrap collapse but we style appearance) */
 .navbar-collapse{transition:max-height .28s ease, opacity .22s ease}
+
+/* Position the collapsed menu under the fixed header on small screens
+   and align items to the right as requested. Keeps desktop layout intact. */
+@media (max-width: 991.98px){
+  .navbar-collapse{
+    position:absolute;
+    top:var(--nav-height);
+    left:0;
+    right:0;
+    background: rgba(2,6,23,0.65);
+    backdrop-filter: blur(8px) saturate(110%);
+    padding: .85rem 1rem 1.2rem;
+    border-bottom-left-radius:12px;
+    border-bottom-right-radius:12px;
+    z-index:1100;
+  }
+  .navbar-nav{flex-direction:column;align-items:flex-end}
+  .navbar-nav .nav-link{text-align:right;padding:.6rem 0}
+}
 
 /* Footer */
 footer{background:#000;color:#fff;padding:12px 0;text-align:center}
